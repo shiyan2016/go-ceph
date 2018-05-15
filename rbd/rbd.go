@@ -5,15 +5,30 @@ package rbd
 // #include <stdlib.h>
 // #include <rados/librados.h>
 // #include <rbd/librbd.h>
+/*
+int diff_callback(uint64_t offset,size_t len,int exists,void *arg) {
+size_t *used_size = (size_t *)(arg);
+if (exists){
+(*used_size) +=len;
+}
+return 0;
+}
+int rbd_allocation(rbd_image_t image, const char *fromsnapname,uint64_t ofs, uint64_t len,
+        void *arg){
+return rbd_diff_iterate(image,fromsnapname,ofs,len,diff_callback,arg);
+}
+int rbd_diff_iterate(rbd_image_t image,const char *fromsnapname,uint64_t ofs, uint64_t len, int (*cb)(uint64_t, size_t, int, void *), void *arg);
+*/
 import "C"
 
 import (
 	"bytes"
 	"errors"
 	"fmt"
-	"github.com/ceph/go-ceph/rados"
 	"io"
 	"unsafe"
+
+	"github.com/ceph/go-ceph/rados"
 )
 
 //
@@ -646,6 +661,22 @@ func (image *Image) Read(data []byte) (n int, err error) {
 	}
 
 	return ret, nil
+}
+
+func (image *Image) GetUsed(imageName string, totalSize uint64) (used int64, err error) {
+	if image.image == nil {
+		return 0, RbdErrorImageNotOpen
+	}
+	ret := int(C.rbd_allocation(
+		image.image,
+		nil,
+		(C.uint64_t)(image.offset),
+		(C.uint64_t)(totalSize),
+		(unsafe.Pointer)(&used)))
+	if ret < 0 {
+		return 0, RBDError(ret)
+	}
+	return used, nil
 }
 
 // ssize_t rbd_write(rbd_image_t image, uint64_t ofs, size_t len, const char *buf);
