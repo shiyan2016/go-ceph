@@ -18,7 +18,7 @@ RUN wget --no-check-certificate -q -O- 'https://ceph.com/git/?p=ceph.git;a=blob_
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-VOLUME /go/src/github.com/ceph/go-ceph
+VOLUME /go/src/github.com/shiyan2016/go-ceph
 
 COPY ./ci/entrypoint.sh /tmp/entrypoint.sh
 

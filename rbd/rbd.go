@@ -28,7 +28,7 @@ import (
 	"io"
 	"unsafe"
 
-	"github.com/ceph/go-ceph/rados"
+	"github.com/shiyan2016/go-ceph/rados"
 )
 
 //

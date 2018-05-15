@@ -12,7 +12,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ceph/go-ceph/rados"
+	"github.com/shiyan2016/go-ceph/rados"
 	"github.com/stretchr/testify/assert"
 )
 

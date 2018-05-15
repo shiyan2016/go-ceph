@@ -1,17 +1,17 @@
 # go-ceph - Go bindings for Ceph APIs
 
-[![Build Status](https://travis-ci.org/ceph/go-ceph.svg)](https://travis-ci.org/ceph/go-ceph) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/ceph/go-ceph) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/ceph/go-ceph/master/LICENSE)
+[![Build Status](https://travis-ci.org/ceph/go-ceph.svg)](https://travis-ci.org/ceph/go-ceph) [![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/shiyan2016/go-ceph) [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/ceph/go-ceph/master/LICENSE)
 
 ## Installation
 
-    go get github.com/ceph/go-ceph
+    go get github.com/shiyan2016/go-ceph
 
 The native RADOS library and development headers are expected to be installed.
 
 ## Documentation
 
 Detailed documentation is available at
-<http://godoc.org/github.com/ceph/go-ceph>.
+<http://godoc.org/github.com/shiyan2016/go-ceph>.
 
 ### Connecting to a cluster
 
